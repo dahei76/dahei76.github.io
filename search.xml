@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>使用Linux/Unix的基本命令（1</title>
+      <link href="/2022/09/18/%E4%BD%BF%E7%94%A8Linux-Unix%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/"/>
+      <url>/2022/09/18/%E4%BD%BF%E7%94%A8Linux-Unix%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<h1 id="系统的登录、退出、启动与关闭"><a href="#系统的登录、退出、启动与关闭" class="headerlink" title="系统的登录、退出、启动与关闭"></a>系统的登录、退出、启动与关闭</h1><ol><li>Linux是一个多用户的操作系统，注册用户想要使用Linux系统资源，必须登陆系统。</li><li>Linux将用户分为普通用户和超级用户。一般的Linux使用者均为普通用户，而系统管理员使用超级用户来进行文件管理等工作。</li><li>用户身份不同系统提示符也不同。<br>#：超级用户<br>$：普通用户</li></ol><h2 id="登录操作"><a href="#登录操作" class="headerlink" title="登录操作"></a>登录操作</h2><ol><li><p>系统启动后，输入用户名并键入回车符</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Login：root</span><br></pre></td></tr></table></figure></li><li><p>输入用户口令，输入的口令不会显示。如果输入错误，屏幕上会显示：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Login incorrect</span><br><span class="line">Login：</span><br></pre></td></tr></table></figure></li></ol><p>执行上述两步后，若屏幕显示如下：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@loclhost root] #</span><br></pre></td></tr></table></figure><p>说明登录成功，可以进行操作</p><h2 id="系统退出"><a href="#系统退出" class="headerlink" title="系统退出"></a>系统退出</h2><p>用户在使用完成后退出系统的操作叫做注销，方法有三种：</p><ol><li>键入：exit</li><li>按Ctrl + D</li><li>logout</li></ol><h2 id="系统的启动与关闭"><a href="#系统的启动与关闭" class="headerlink" title="系统的启动与关闭"></a>系统的启动与关闭</h2><p>Linux在不使用系统资源时，需要关闭系统。必须由超级用户在shell提示符下，键入关闭命令，系统将完整的执行关闭所有进程，释放占用资源，停止运行。切断电源。</p><h3 id="关闭系统的命令："><a href="#关闭系统的命令：" class="headerlink" title="关闭系统的命令："></a>关闭系统的命令：</h3><p><code>[root@loclhost /root] # shutdown -h now</code></p><p><code>[root@loclhost /root] # halt</code></p><p><code>[root@loclhost /root] # init 0</code></p><p><code>[root@loclhost /root] # poweroff</code></p><h3 id="重启系统的命令："><a href="#重启系统的命令：" class="headerlink" title="重启系统的命令："></a>重启系统的命令：</h3><p>reboot 命令</p><p>shutdown -r <code>&lt;time&gt;</code> 命令</p><p>组合键Ctrl + Alt + Del</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 操作系统基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>计算机启动原理与操作系统的目标</title>
       <link href="/2022/09/13/post1/"/>
       <url>/2022/09/13/post1/</url>
