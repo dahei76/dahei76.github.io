@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>进程</title>
+      <link href="/2022/09/22/%E8%BF%9B%E7%A8%8B/"/>
+      <url>/2022/09/22/%E8%BF%9B%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<h1 id="进程的概念"><a href="#进程的概念" class="headerlink" title="进程的概念"></a>进程的概念</h1><p><strong>并发：现代操作系统允许多个程序被加载入内存中并同时进行</strong></p><p>在单核CPU上，多个程序不可能在微观意义（纳秒级时间尺度）上同时进行，只能实现串行，但通过多道迅速来回切换执行不同程序，可以在宏观意义（秒级时间尺度）上同时进行。</p><p>假设有两个程序A、B执行时间均为40ms，如果他们轮流执行，总的执行时间为80ms，CPU的效率较低。而在两程序执行过程中，不可能每时每刻都在使用CPU，也会对其他设备进行使用，所以采用并发的方式执行多个程序可以有效地提高CPU的使用效率。</p><p><img src="/image/%E8%BF%9B%E7%A8%8B/1663843296075.png" alt="1663843296075"><img src="/image/%E8%BF%9B%E7%A8%8B/1663843312802.png" alt="1663843312802"></p><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul><li>正在执行中的程序</li><li>一个具有一定独立性的程序在数据集合上的一次动态执行过程</li><li>系统进行资源分配和调度的基本单位</li></ul><p>进程是一个动态概念，程序是一个静态概念</p><h2 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h2><ul><li>结构特征：程序段、数据段、进程控制块PCB</li><li>动态性：最基本的特征，进程是动态产生、动态消亡的；进程在其生命周期内，有三种基本状态来切换（就绪、等待、执行）</li><li>并发性：任何进程都可以和其他进程一起向前推进</li><li>独立性：进程是一个能独立运行的基本单位，同时也是系统中独立获得资源和独立调度的基本单位</li><li>异步性：每个进程都已其相对独立、不可预知的速度向前推进</li></ul><h2 id="内存空间"><a href="#内存空间" class="headerlink" title="内存空间"></a>内存空间</h2><ul><li>代码段</li><li>数据段</li><li>堆</li><li>堆栈</li></ul><p><img src="/image/%E8%BF%9B%E7%A8%8B/1663844353578.png" alt="1663844353578"></p><h1 id="进程的组织"><a href="#进程的组织" class="headerlink" title="进程的组织"></a>进程的组织</h1><p><strong>进程树：</strong></p><p><img src="/image/%E8%BF%9B%E7%A8%8B/1663844992620.png" alt="1663844992620"></p><h2 id="进程层次"><a href="#进程层次" class="headerlink" title="进程层次"></a>进程层次</h2><ul><li>在Unix操作系统中，所有的进程都由其他的进程生成，生成与被生成的进程为父子关系。</li><li>在上图所示的进程树中，init进程是所有用户进程的祖先进程。</li><li>在Windows系统下，进程之间都是平等的。</li></ul><h2 id="程序控制块（PCB）"><a href="#程序控制块（PCB）" class="headerlink" title="程序控制块（PCB）"></a>程序控制块（PCB）</h2><p><strong>PCB用于保存进程在执行过程中的重要信息，进程与PCB是一一对应的</strong></p><ul><li>进程存在的唯一标识</li><li>存储着OS所需的用于描述进程和控制进程的所有信息</li></ul><p><img src="/image/%E8%BF%9B%E7%A8%8B/1663845626478.png" alt="1663845626478"></p><p><strong>进程空间和大小</strong></p><ul><li>每个PCB都要占据一定的内存，PCB存贮在Process table中。</li><li>Process table的大小有限，所存储的PCB数量有限，所以并发进行的进程数有限</li></ul><h2 id="CPU在不同进程中的切换"><a href="#CPU在不同进程中的切换" class="headerlink" title="CPU在不同进程中的切换"></a>CPU在不同进程中的切换</h2><ul><li>当CPU切换到另一个进程时，需要保存老进程的状态，并且加载新系统的状态</li><li>不同进程的切换时额外的时间开销，在切换过程中CPU不会进行任何有效的工作</li><li>切换时间与硬件性能密切相关</li></ul><p><img src="/image/%E8%BF%9B%E7%A8%8B/1663846217100.png" alt="1663846217100"></p><h1 id="进程的状态"><a href="#进程的状态" class="headerlink" title="进程的状态"></a>进程的状态</h1><h2 id="进程生命周期"><a href="#进程生命周期" class="headerlink" title="进程生命周期"></a>进程生命周期</h2><p><strong>在进程执行时，它的状态会发生多次变化：</strong></p><ul><li>new：进程刚被创建</li><li>running：进程正在执行</li><li>blocked：进程等待某些资源就绪后才能执行</li><li>ready：进程所需资源准备完毕，等待CPU分配时间</li><li>terminated：进程终止、</li></ul><p><strong>进程在以下情况下会被生成：</strong></p><ul><li>系统初始化</li><li>正在运行的进程调用系统生成子进程</li><li>用户命令生成进程</li><li>批处理作业的生成</li></ul><p>进程的状态切换：</p><p><img src="/image/%E8%BF%9B%E7%A8%8B/1663849046495.png" alt="1663849046495"></p><ul><li>Running：进程具有所需资源并正在CPU中运行</li><li>Ready：进程具有所需资源但正在等待CPU的分配</li><li>Blocked：进程不具备所需资源</li><li>1：进程在Running过程中发现所需资源不足，于是转入Blocked态</li><li>2：进程在Running过程中CPU所分配的时间耗尽，转入Ready态</li><li>3：进程得到CPU分配的时间，转入Running态</li><li>4：进程获得了执行所需资源，转入Ready态（只能被其他进程唤醒而不能自己转变）</li></ul><p><em>实际上，由于Running态和Ready态都具备运行所需的资源，所以将它们统称为Runnable态，并将它们储存在同一队列中。存在Scheduler指针，指向正在运行的进程，并以指针的变化来表示Running态和Ready态的变化。</em></p><p>进程的终止：</p><ul><li>进程在完成时自己终止</li><li>进程在碰见错误时终止</li><li>进程在收到其他进程的特定信号时终止</li></ul><p><em>当进程自己终止时它进入“僵尸”态</em></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 操作系统基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>使用Linux-Unix的基本命令(2)</title>
       <link href="/2022/09/18/%E4%BD%BF%E7%94%A8Linux-Unix%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4-2/"/>
       <url>/2022/09/18/%E4%BD%BF%E7%94%A8Linux-Unix%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4-2/</url>
@@ -42,7 +61,7 @@
     
     
     <entry>
-      <title>计算机启动原理与操作系统的目标</title>
+      <title></title>
       <link href="/2022/09/13/post1/"/>
       <url>/2022/09/13/post1/</url>
       
